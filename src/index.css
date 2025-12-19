@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Deep Black Crypto Theme */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Neon Cyan Primary */
+    --primary: 180 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    /* Light Blue Secondary */
+    --secondary: 199 100% 62%;
+    --secondary-foreground: 0 0% 0%;
+
+    /* Dark Glass Muted */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    /* Cyan Accent */
+    --accent: 180 100% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 180 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom Crypto Colors */
+    --neon-cyan: 180 100% 50%;
+    --light-blue: 199 100% 62%;
+    --dark-glass: 0 0% 10%;
+    --cyber-glow: 180 100% 50%;
+    
+    /* Brand Glows */
+    --discord-glow: 235 86% 65%;
+    --linkedin-glow: 201 100% 35%;
+    --email-glow: 48 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Mono', monospace;
+  }
+}
+
+@layer utilities {
+  /* Tactile Press Effect */
+  .tactile-press {
+    cursor: pointer;
+    transition: transform 100ms ease-in-out;
+  }
+  
+  .tactile-press:active {
+    transform: scale(0.98);
+  }
+
+  /* Ripple Container */
+  .ripple-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Border Flash Animation */
+  @keyframes border-flash {
+    0% {
+      border-color: hsl(0 0% 100%);
+    }
+    100% {
+      border-color: hsl(var(--primary));
+    }
+  }
+
+  .border-flash {
+    animation: border-flash 300ms ease-out;
+  }
+  
+  .glow-cyan {
+    box-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.5),
+                0 0 40px hsl(var(--neon-cyan) / 0.3);
+  }
+  
+  .glow-blue {
+    box-shadow: 0 0 20px hsl(var(--light-blue) / 0.5),
+                0 0 40px hsl(var(--light-blue) / 0.3);
+  }
+
+  .glow-discord {
+    box-shadow: 0 0 20px hsl(var(--discord-glow) / 0.6),
+                0 0 40px hsl(var(--discord-glow) / 0.4);
+  }
+
+  .glow-linkedin {
+    box-shadow: 0 0 20px hsl(var(--linkedin-glow) / 0.6),
+                0 0 40px hsl(var(--linkedin-glow) / 0.4);
+  }
+
+  .glow-email {
+    box-shadow: 0 0 20px hsl(var(--email-glow) / 0.6),
+                0 0 40px hsl(var(--email-glow) / 0.4);
+  }
+
+  .glow-red {
+    box-shadow: 0 0 20px hsl(var(--destructive) / 0.6),
+                0 0 40px hsl(var(--destructive) / 0.4);
+  }
+
+  .glass-card {
+    background: linear-gradient(135deg, 
+      hsl(var(--dark-glass) / 0.6), 
+      hsl(var(--dark-glass) / 0.3));
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--border) / 0.3);
+  }
+
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, 
+      hsl(var(--neon-cyan)), 
+      hsl(var(--light-blue)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
